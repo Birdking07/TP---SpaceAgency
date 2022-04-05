@@ -9,7 +9,7 @@ import java.util.Random;
  * @version 0.1
  * @since 2022-03-28
  */
-public class GrandGenerateur {
+public class BigGenerator {
     public static final int LONGUEUR_CHAINE_CONTROLE = 1024;
 
     /**
