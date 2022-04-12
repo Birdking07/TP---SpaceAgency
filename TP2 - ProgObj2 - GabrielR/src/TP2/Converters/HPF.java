@@ -21,7 +21,7 @@ public class HPF {
           }
 
       }
-      if (value <= limit) {
+      if (value >= limit) {
            return "0";
       } else {
           return String.valueOf(value);
