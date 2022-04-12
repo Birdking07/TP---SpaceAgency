@@ -6,7 +6,7 @@ public class ROT {
         char[] hexadecimals = {'A' , 'B' , 'C' , 'D' , 'E'};
         int preCalc = Integer.parseInt(receivedValue);
         int addValue = preCalc + valueVariation;
-        if (addValue >= 0 || addValue <= 15){
+        if (addValue >= 0 && addValue <= 15){
             if (addValue < 10){
                 return String.valueOf(addValue);
             }
