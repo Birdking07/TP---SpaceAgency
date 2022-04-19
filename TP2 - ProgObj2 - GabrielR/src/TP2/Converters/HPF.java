@@ -1,12 +1,18 @@
 package TP2.Converters;
 
 public class HPF {
- //set limit for the HPF filter and only include values between 0 and 15
+
 
     int defaultLimit = 8;
 
+    /**
+     * @return une valeur qui est soit plus grand ou égal au limite défini
+     */
 
-    public String HPF (String receivedValue , int limit){
+    public static String transform (String receivedValue , int limit){
+
+
+
         int value = 0;
       try {
          value = Integer.parseInt(receivedValue);

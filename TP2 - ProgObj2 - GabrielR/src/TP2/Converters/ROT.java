@@ -2,7 +2,7 @@ package TP2.Converters;
 
 public class ROT {
 
-    public String ROT (String receivedValue , int valueVariation){
+    public String transform (String receivedValue , int valueVariation){
         char[] hexadecimals = {'A' , 'B' , 'C' , 'D' , 'E'};
         int preCalc = Integer.parseInt(receivedValue);
         int addValue = preCalc + valueVariation;

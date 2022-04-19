@@ -9,16 +9,42 @@
 
 package TP2;
 
+import TP2.Converters.*;
+
+import java.lang.reflect.Method;
+
 public class SystemController {
 
-    private static String sequence;
 
     public static void main(String[] Args){
 
-        BigGenerator gg = new BigGenerator();
+        BigGenerator generator = new BigGenerator();
 
         int seed = 3113;
-        sequence = gg.obtenirChaineControle(seed);
+        String sequence = generator.obtenirChaineControle(seed);
+
+
+
+        String[] allConverters = {"HPF" , "LPF"};
+        for(int i = 0 ; i < allConverters.length ; i++){
+            convert( allConverters[i], sequence);
+        }
+
+
+    }
+
+    /**
+     *
+     * @param converterType type de convertisseur utilisé
+     *  Options : HPF INV LPV POI ROT
+     * @param sequence série de chiffres de la méthode obtenirChaineControle
+     */
+
+    private static void convert(String converterType , String sequence){
+
+       //just make the fucking switch i cba
+
+
 
 
     }

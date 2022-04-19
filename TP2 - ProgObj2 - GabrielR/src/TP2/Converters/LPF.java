@@ -2,7 +2,7 @@ package TP2.Converters;
 
 public class LPF {
 
-    public String LPF (String receivedValue , int limit){
+    public String transform (String receivedValue , int limit){
         int value = 0;
         try {
             value = Integer.parseInt(receivedValue);
