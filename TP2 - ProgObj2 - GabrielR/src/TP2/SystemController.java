@@ -28,9 +28,11 @@ public class SystemController {
 
 
 
-        String[] allConverters = {"HPF" , "LPF"};
+        int loopCounter = 1;
+        String[] allConverters = {"HPF" , "LPV"}; //changer avec la liste de convertisseurs
         for(int i = 0 ; i < allConverters.length ; i++){
-            convert( allConverters[i], sequence);
+            convert( allConverters[i], sequence , loopCounter);
+            loopCounter++;
         }
 
 
@@ -43,7 +45,37 @@ public class SystemController {
      * @param sequence série de chiffres de la méthode obtenirChaineControle
      */
 
-    private static void convert(String converterType , String sequence){
+    private static void convert(String converterType , String sequence , int loopCounter){
+
+            switch (converterType){
+
+                case "HPF" -> {
+                    HPF instanceHPF = new HPF();
+                    instanceHPF.convert(sequence , 8); //changer avec la limite voulue
+                }
+                case "INV" -> {
+                    INV instanceINV = new INV();
+                    instanceINV.convert(sequence);
+                }
+                case "LPV" -> {
+                    LPF instanceLPV = new LPF();
+                    instanceLPV.convert(sequence , 8); //changer avec la limite voulue
+                }
+                case "POI" -> {
+                    POI instancePOI = new POI();
+                    instancePOI.convert(sequence , true); //changer pour false si on souhaite filtrer les nombres impairs
+                }
+                case "ROT" -> {
+                    ROT instanceROT = new ROT(13); //changer avec la variation voulue pour la classe ROT
+                    instanceROT.convert(sequence);
+                }
+                default -> {
+                    System.out.println("Classe " + loopCounter + " Invalide");
+                    System.out.println("Entrez une classe valide Gilles :(");
+                }
+            }
+
+
 
     }
 
