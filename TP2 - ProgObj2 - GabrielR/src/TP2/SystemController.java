@@ -13,7 +13,7 @@ import TP2.Analysers.OneDim;
 import TP2.Analysers.TwoDim;
 import TP2.Converters.*;
 
-import java.lang.reflect.Method;
+
 import java.util.ArrayList;
 
 public class SystemController {
@@ -28,7 +28,7 @@ public class SystemController {
 
 
         int loopCounter = 1;
-        String[] allConverters = {"INV"}; //changer avec la liste de convertisseurs
+        String[] allConverters = {"LPF"}; //changer avec la liste de convertisseurs
         for(int i = 0 ; i < allConverters.length ; i++){
             convert( allConverters[i], sequence , loopCounter);
             loopCounter++;
@@ -40,7 +40,7 @@ public class SystemController {
     /**
      *
      * @param converterType type de convertisseur utilisé
-     *  Options : HPF INV LPV POI ROT
+     *  Options : HPF INV LPF POI ROT
      * @param sequence série de chiffres de la méthode obtenirChaineControle
      */
 
@@ -56,9 +56,10 @@ public class SystemController {
                     INV instanceINV = new INV();
                     instanceINV.convert(sequence);
                 }
-                case "LPV" -> {
+                case "LPF" -> {
                     LPF instanceLPV = new LPF();
                     instanceLPV.convert(sequence , 8); //changer avec la limite voulue
+
                 }
                 case "POI" -> {
                     POI instancePOI = new POI();
@@ -78,7 +79,7 @@ public class SystemController {
 
     }
 
-    static private void testerComposants() {
+    static private void testTP() {
 
         //remove comments and refractor to undergo different tests
 
