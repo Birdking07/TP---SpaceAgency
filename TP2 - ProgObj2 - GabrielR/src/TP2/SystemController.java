@@ -28,7 +28,7 @@ public class SystemController {
 
 
         int loopCounter = 1;
-        String[] allConverters = {"LPF"}; //changer avec la liste de convertisseurs
+        String[] allConverters = {"POI"}; //changer avec la liste de convertisseurs
         for(int i = 0 ; i < allConverters.length ; i++){
             convert( allConverters[i], sequence , loopCounter);
             loopCounter++;
@@ -63,7 +63,7 @@ public class SystemController {
                 }
                 case "POI" -> {
                     POI instancePOI = new POI();
-                    instancePOI.convert(sequence , true); //changer pour false si on souhaite filtrer les nombres impairs
+                   instancePOI.convert(sequence , true); //changer pour false si on souhaite filtrer les nombres impairs
                 }
                 case "ROT" -> {
                     ROT instanceROT = new ROT(13); //changer avec la variation voulue pour la classe ROT
