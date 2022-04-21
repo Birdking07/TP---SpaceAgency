@@ -67,8 +67,7 @@ public class SystemController {
                 }
                 case "ROT" -> {
                     ROT instanceROT = new ROT(13); //changer avec la variation voulue pour la classe ROT
-                   String s = instanceROT.convert(sequence);
-                    System.out.println(s);
+                    instanceROT.convert(sequence);
                 }
                 default -> {
                     System.out.println("Classe " + loopCounter + " Invalide");
