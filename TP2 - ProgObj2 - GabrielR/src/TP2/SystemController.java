@@ -28,7 +28,7 @@ public class SystemController {
 
 
         int loopCounter = 1;
-        String[] allConverters = {"POI"}; //changer avec la liste de convertisseurs
+        String[] allConverters = {"ROT"}; //changer avec la liste de convertisseurs
         for(int i = 0 ; i < allConverters.length ; i++){
             convert( allConverters[i], sequence , loopCounter);
             loopCounter++;
@@ -67,7 +67,8 @@ public class SystemController {
                 }
                 case "ROT" -> {
                     ROT instanceROT = new ROT(13); //changer avec la variation voulue pour la classe ROT
-                    instanceROT.convert(sequence);
+                   String s = instanceROT.convert(sequence);
+                    System.out.println(s);
                 }
                 default -> {
                     System.out.println("Classe " + loopCounter + " Invalide");
