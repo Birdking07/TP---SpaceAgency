@@ -3,6 +3,11 @@ package TP2.Analysers;
 public class TwoDim extends AnalyserFormat{
 
 
+
+    public boolean analyse(String chain , String test) {
+        return false;
+    }
+
     protected boolean Sequence() {
         return false;
     }

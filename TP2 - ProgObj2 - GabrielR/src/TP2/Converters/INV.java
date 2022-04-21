@@ -2,7 +2,7 @@ package TP2.Converters;
 
 public class INV {
 
-    public String transform (String receivedValue){
+    public String convert (String receivedValue){
         String characterSent = receivedValue.toUpperCase();
         switch (characterSent) {
             case "0" -> characterSent = "F";

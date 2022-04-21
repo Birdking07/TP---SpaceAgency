@@ -2,7 +2,7 @@ package TP2.Converters;
 
 public class POI {
 
-    public String transform (String receivedValue , boolean isEven){
+    public String convert (String receivedValue , boolean isEven){
         String[] evenNumbers = {"0","2","4","6","8" , "A" , "C" , "E"};
         String[] oddNumbers = {"1","3","5","7","9" , "B" , "D" , "F"};
 

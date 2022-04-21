@@ -2,10 +2,17 @@ package TP2.Converters;
 
 public class ROT {
 
-    public String transform (String receivedValue , int valueVariation){
+    private int variation;
+
+    public ROT (int storedInt){
+        storeROT(storedInt);
+    }
+
+    public String convert (String receivedValue){
         char[] hexadecimals = {'A' , 'B' , 'C' , 'D' , 'E'};
         int preCalc = Integer.parseInt(receivedValue);
-        int addValue = preCalc + valueVariation;
+
+        int addValue = preCalc + variation;
         if (addValue >= 0 && addValue <= 15){
             if (addValue < 10){
                 return String.valueOf(addValue);
@@ -19,5 +26,9 @@ public class ROT {
             }
         }
         return "";
+    }
+
+    private void storeROT(int variation){
+        this.variation = variation;
     }
 }

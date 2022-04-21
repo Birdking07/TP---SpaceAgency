@@ -3,15 +3,17 @@ package TP2.Converters;
 public class HPF {
 
 
-    int defaultLimit = 8;
+    private static int defaultLimit = 8;
 
     /**
      * @return une valeur qui est soit plus grand ou égal au limite défini
      */
 
-    public static String transform (String receivedValue , int limit){
+    public static String convert (String receivedValue, int limit) {
 
-
+        if (limit < 0) {
+            limit = defaultLimit;
+        }
 
         int value = 0;
       try {
