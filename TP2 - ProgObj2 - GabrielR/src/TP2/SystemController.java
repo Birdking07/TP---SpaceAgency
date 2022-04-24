@@ -30,9 +30,10 @@ public class SystemController {
         int loopCounter = 1;
         String[] allConverters = {"LPF"}; //changer avec la liste de convertisseurs
         for(int i = 0 ; i < allConverters.length ; i++){
-            convert( allConverters[i], sequence , loopCounter);
+          sequence = convert( allConverters[i], sequence , loopCounter);
             loopCounter++;
         }
+        boolean liftoff = analyse(sequence);
 
     }
 
@@ -43,38 +44,49 @@ public class SystemController {
      * @param sequence série de chiffres de la méthode obtenirChaineControle
      */
 
-    private static void convert(String converterType , String sequence , int loopCounter){
+    private static String convert(String converterType , String sequence , int loopCounter){
 
             switch (converterType){
 
                 case "HPF" -> {
                     HPF instanceHPF = new HPF();
-                   instanceHPF.convert(sequence , 8); //changer avec la limite voulue
+                  return instanceHPF.convert(sequence , 8); //changer avec la limite voulue
 
                 }
                 case "INV" -> {
                     INV instanceINV = new INV();
-                    instanceINV.convert(sequence);
+                   return instanceINV.convert(sequence);
                 }
                 case "LPF" -> {
                     LPF instanceLPV = new LPF();
-                    instanceLPV.convert(sequence , 8); //changer avec la limite voulue
+                   return instanceLPV.convert(sequence , 8); //changer avec la limite voulue
 
 
                 }
                 case "POI" -> {
                     POI instancePOI = new POI();
-                   instancePOI.convert(sequence , true); //changer pour false si on souhaite filtrer les nombres impairs
+                  return instancePOI.convert(sequence , true); //changer pour false si on souhaite filtrer les nombres impairs
                 }
                 case "ROT" -> {
                     ROT instanceROT = new ROT(13); //changer avec la variation voulue pour la classe ROT
-                    instanceROT.convert(sequence);
+                  return  instanceROT.convert(sequence);
                 }
                 default -> {
                     System.out.println("Classe " + loopCounter + " Invalide");
-                    System.out.println("Entrez une classe valide Gilles :(");
+                    System.out.println("Entrez une classe valide Gilles :( ");
+                    return null;
                 }
+
             }
+
+    }
+
+    private static boolean analyse(String sequence){
+        testTP();
+        OneDim oneDim = new OneDim();
+        oneDim.Sequence(sequence , "77B7B9DA5AE45C2EF2AC4F2FD59DF230" );
+
+        return false;
     }
 
     static private void testTP() {
