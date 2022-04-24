@@ -23,12 +23,12 @@ public class SystemController {
 
         BigGenerator generator = new BigGenerator();
 
-        int seed = 60;
+        int seed = 70;
         String sequence = generator.obtenirChaineControle(seed);
 
 
         int loopCounter = 1;
-        String[] allConverters = {"ROT"}; //changer avec la liste de convertisseurs
+        String[] allConverters = {"HPF"}; //changer avec la liste de convertisseurs
         for(int i = 0 ; i < allConverters.length ; i++){
             convert( allConverters[i], sequence , loopCounter);
             loopCounter++;
@@ -49,7 +49,8 @@ public class SystemController {
 
                 case "HPF" -> {
                     HPF instanceHPF = new HPF();
-                    instanceHPF.convert(sequence , 8); //changer avec la limite voulue
+                   instanceHPF.convert(sequence , 8); //changer avec la limite voulue
+
                 }
                 case "INV" -> {
                     INV instanceINV = new INV();
@@ -66,9 +67,7 @@ public class SystemController {
                 }
                 case "ROT" -> {
                     ROT instanceROT = new ROT(13); //changer avec la variation voulue pour la classe ROT
-                    String s = instanceROT.convert(sequence);
-                    System.out.println(s);
-                    //82CD6741C9F46B8C9BAB8F15115F4A5F
+                    instanceROT.convert(sequence);
                 }
                 default -> {
                     System.out.println("Classe " + loopCounter + " Invalide");

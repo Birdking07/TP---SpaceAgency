@@ -13,7 +13,7 @@ public class HPF {
     public String convert(String receivedValue, int limit) {
 
         String newValue = "";
-        for (int i = 0; i < receivedValue.length(); i++) {
+        for (int i = 0; i < 32 ; i++) {
             newValue += seperate(receivedValue.charAt(i), limit);
         }
 
@@ -42,9 +42,9 @@ public class HPF {
 
         }
         if (value >= limit) {
-            return '0';
-        } else {
             return currentCharacter;
+        } else {
+            return '0';
         }
     }
 
