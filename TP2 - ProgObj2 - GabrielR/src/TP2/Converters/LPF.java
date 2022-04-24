@@ -27,9 +27,9 @@ public class LPF {
 
         }
         if (value <= limit) {
-            return '0';
-        } else {
             return currentCharacter;
+        } else {
+            return '0';
         }
     }
 }

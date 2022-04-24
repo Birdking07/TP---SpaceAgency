@@ -23,12 +23,12 @@ public class SystemController {
 
         BigGenerator generator = new BigGenerator();
 
-        int seed = 70;
+        int seed = 80;
         String sequence = generator.obtenirChaineControle(seed);
 
 
         int loopCounter = 1;
-        String[] allConverters = {"HPF"}; //changer avec la liste de convertisseurs
+        String[] allConverters = {"LPF"}; //changer avec la liste de convertisseurs
         for(int i = 0 ; i < allConverters.length ; i++){
             convert( allConverters[i], sequence , loopCounter);
             loopCounter++;
@@ -59,6 +59,7 @@ public class SystemController {
                 case "LPF" -> {
                     LPF instanceLPV = new LPF();
                     instanceLPV.convert(sequence , 8); //changer avec la limite voulue
+
 
                 }
                 case "POI" -> {
@@ -107,8 +108,8 @@ public class SystemController {
         System.out.println("TEST HPF : " + (result ? "BON TP!" : "MAUVAIS TP??"));
 
         chain = BigGenerator.obtenirChaineControle(80);
-        conversion = convLPF.convert(chain , 8);
-        result = conversion.startsWith("00600312560720062001220530360700");
+        conversion = convLPF.convert(chain , 7);
+        result = conversion.startsWith("00600312560720062001220530360700"); //should the last digit not be an 8 in this case?
         System.out.println("TEST LPF : " + (result ? "BON TP!" : "MAUVAIS TP??"));
 
         chain = BigGenerator.obtenirChaineControle(90);
