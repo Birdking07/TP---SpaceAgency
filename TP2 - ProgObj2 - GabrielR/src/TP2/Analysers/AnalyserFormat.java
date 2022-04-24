@@ -1,14 +1,14 @@
 package TP2.Analysers;
 
+import java.util.ArrayList;
+
 public abstract class AnalyserFormat {
 
-    public abstract boolean analyse(String chain , String test); // retourne true si le format est bon
+    public abstract boolean Sequence(String chain , String sequence); //returns true if a sequence is present in selected chain
 
-    protected abstract boolean Sequence(); //returns true if a sequence is present in selected chain
+    public abstract boolean AllSequences(String chain , ArrayList<String> sequenceList); //returns true if one of the sequences is present
 
-    protected abstract boolean AllSequences(); //returns true if one of the sequences is present
+    public abstract boolean OneSequenceCount(String chain , String sequence , int objective); //returns true if a string is present x times within a sequence
 
-    protected abstract boolean OneSequenceCount(); //returns true if a string is present x times within a sequence
-
-    protected abstract boolean AllSequencesCount(); //returns true if all sequences are present x times
+    public abstract boolean AllSequencesCount(String chain , ArrayList<String> sequenceList , int objective); //returns true if all sequences are present x times
 }

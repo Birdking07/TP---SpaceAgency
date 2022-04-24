@@ -1,26 +1,27 @@
 package TP2.Analysers;
 
+import java.util.ArrayList;
+
 public class OneDim extends AnalyserFormat{
 
 
 
-    public boolean analyse(String chain , String test) {
+    public boolean Sequence(String chain, String sequence) {
         return false;
     }
 
-    protected boolean Sequence() {
+
+    public boolean AllSequences(String chain, ArrayList<String> sequenceList) {
         return false;
     }
 
-    protected boolean AllSequences() {
+
+    public boolean OneSequenceCount(String chain, String sequence, int objective) {
         return false;
     }
 
-    protected boolean OneSequenceCount() {
-        return false;
-    }
 
-    protected boolean AllSequencesCount() {
+    public boolean AllSequencesCount(String chain, ArrayList<String> sequenceList, int objective) {
         return false;
     }
 }

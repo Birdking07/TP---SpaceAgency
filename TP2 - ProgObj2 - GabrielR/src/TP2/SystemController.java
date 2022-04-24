@@ -23,7 +23,7 @@ public class SystemController {
 
         BigGenerator generator = new BigGenerator();
 
-        int seed = 3113;
+        int seed = 60;
         String sequence = generator.obtenirChaineControle(seed);
 
 
@@ -33,7 +33,6 @@ public class SystemController {
             convert( allConverters[i], sequence , loopCounter);
             loopCounter++;
         }
-
 
     }
 
@@ -67,16 +66,15 @@ public class SystemController {
                 }
                 case "ROT" -> {
                     ROT instanceROT = new ROT(13); //changer avec la variation voulue pour la classe ROT
-                    instanceROT.convert(sequence);
+                    String s = instanceROT.convert(sequence);
+                    System.out.println(s);
+                    //82CD6741C9F46B8C9BAB8F15115F4A5F
                 }
                 default -> {
                     System.out.println("Classe " + loopCounter + " Invalide");
                     System.out.println("Entrez une classe valide Gilles :(");
                 }
             }
-
-
-
     }
 
     static private void testTP() {
@@ -121,65 +119,58 @@ public class SystemController {
 
 
         OneDim analyseur1D = new OneDim();
-        TwoDim analyseur2D = new TwoDim();
+        TwoDim TwoDim = new TwoDim();
         chain = BigGenerator.obtenirChaineControle(100);
 
         // sequence contains
-        result = analyseur1D.analyse(chain, "77B7B9DA5AE45C2EF2AC4F2FD59DF235");
+        result = analyseur1D.Sequence(chain, "77B7B9DA5AE45C2EF2AC4F2FD59DF235");
         System.out.println("TEST 1D.1 : " + (result ? "BON TP!" : "MAUVAIS TP??"));
 
         // absent within sequence
-        result = analyseur1D.analyse(chain, "77B7B9DA5AE45C2EF2AC4F2FD59DF230");
+        result = analyseur1D.Sequence(chain, "77B7B9DA5AE45C2EF2AC4F2FD59DF230");
         System.out.println("TEST 1D.2 : " + (!result ? "BON TP!" : "MAUVAIS TP??"));
 
-        /*
          // returns true if two or more sequences are present
         sequences = new ArrayList<>();
         sequences.add("BCBAB105397C688E28CC5E8D9478FE40");  // true
         sequences.add("26CF16DD67598821B6B216BB196CF42E");  // true
-        result = analyseur1D.analyse(chain, sequences);
+        result = analyseur1D.AllSequences(chain, sequences);
         System.out.println("TEST 1D.3 : " + (result ? "BON TP!" : "MAUVAIS TP??"));
 
 
 
         // two sequences present and one absent -> returns true
         sequences.add("668BA6724590940523E66D0938EBD275");  // false
-        result = analyseur1D.analyse(chain, sequences);
+        result = analyseur1D.AllSequences(chain, sequences);
         System.out.println("TEST 1D.4 : " + (result ? "BON TP!" : "MAUVAIS TP??"));
 
         // two absent sequences -> returns false
         sequences.clear();
         sequences.add("668BA6724590940523E66D0938EBD275");  // false
         sequences.add("69764F7AFB4FE0F99A4C0DE8A5049354");  // false
-        result = analyseur1D.analyse(chain, sequences);
+        result = analyseur1D.AllSequences(chain, sequences);
         System.out.println("TEST 1D.5 : " + (!result ? "BON TP!" : "MAUVAIS TP??"));
 
-        */
-
-
-        /*
-
-
         // if the sequence is present 8 times -> returns true since the int given is 8
-        result = analyseur1D.analyse(chain, "12", 8);
+        result = analyseur1D.OneSequenceCount(chain, "12", 8);
         System.out.println("TEST 1D.6 : " + (result ? "BON TP!" : "MAUVAIS TP??"));
 
         // if the sequence is present 8 times -> returns false since the int given is 9
-        result = analyseur1D.analyse(chain, "12", 9);
+        result = analyseur1D.OneSequenceCount(chain, "12", 9);
         System.out.println("TEST 1D.7 : " + (!result ? "BON TP!" : "MAUVAIS TP??"));
 
         // if the sequence is present 8 and 10 times -> returns true if int is 8
         sequences.clear();
         sequences.add("12");  // present 8 times
         sequences.add("31");  // present 10 times
-        result = analyseur1D.analyse(chain, sequences, 8);
+        result = analyseur1D.AllSequencesCount(chain, sequences, 8);
         System.out.println("TEST 1D.8 : " + (result ? "BON TP!" : "MAUVAIS TP??"));
 
         // if the sequences are present 8 and 10 times -> returns false for int 9
-        result = analyseur1D.analyse(chain, sequences, 9);
+        result = analyseur1D.AllSequencesCount(chain, sequences, 9);
         System.out.println("TEST 1D.9 : " + (!result ? "BON TP!" : "MAUVAIS TP??"));
 
-        */
+
 
         chain = BigGenerator.obtenirChaineControle(110);
         /*  B5381678D4AAB83812723044C137E36B
@@ -216,54 +207,54 @@ public class SystemController {
             18566776A76ED925BBF7D49A3F439D34 */
 
         // sequence present
-        result = analyseur2D.analyse(chain, "9C63FF92");
+        result = TwoDim.Sequence(chain, "9C63FF92");
         System.out.println("TEST 2D.1 : " + (result ? "BON TP!" : "MAUVAIS TP??"));;
 
         // sequence absente
-        result = analyseur2D.analyse(chain, "9C63FF93");
+        result = TwoDim.Sequence(chain, "9C63FF93");
         System.out.println("TEST 2D.2 : " + (!result ? "BON TP!" : "MAUVAIS TP??"));
 
-        /*
+
         // two sequences present -> has to return TRUE
         sequences.clear();
         sequences.add("25FFB4D2");  // present
         sequences.add("CF666025");  // present
-        result = analyseur2D.analyse(chain, sequences);
+        result = TwoDim.AllSequences(chain, sequences);
         System.out.println("TEST 2D.3 : " + (result ? "BON TP!" : "MAUVAIS TP??"));
 
         // two sequences present, une absente -> has to return TRUE
         sequences.add("FFFFFFFF");  // absente
-        result = analyseur2D.analyse(chain, sequences);
+        result = TwoDim.AllSequences(chain, sequences);
         System.out.println("TEST 2D.4 : " + (result ? "BON TP!" : "MAUVAIS TP??"));
 
         // two sequences absent -> has to return FALSE
         sequences.clear();
         sequences.add("FFFFFFFF");  // absent
         sequences.add("DEADBEEF");  // absent
-        result = analyseur2D.analyse(chain, sequences);
+        result = TwoDim.AllSequences(chain, sequences);
         System.out.println("TEST 2D.5 : " + (!result ? "BON TP!" : "MAUVAIS TP??"));
-        */
 
-        /*
+
+
         // sequence present 28 times -> has to return TRUE with a value of = 28
-        result = analyseur2D.analyse(chain, "60", 28);
+        result = TwoDim.OneSequenceCount(chain, "60", 28);
         System.out.println("TEST 2D.6 : " + (result ? "BON TP!" : "MAUVAIS TP??"));
 
         // sequence present 28 times -> has to return FALSE with a value of = 29
-        result = analyseur2D.analyse(chain, "60", 29);
+        result = TwoDim.OneSequenceCount(chain, "60", 29);
         System.out.println("TEST 2D.7 : " + (!result ? "BON TP!" : "MAUVAIS TP??"));
 
         // sequences present 2 et 3 times -> has to return TRUE with a value of 2
         sequences.clear();
         sequences.add("79F");  // present 2 times
         sequences.add("E42");  // present 3 times
-        result = analyseur2D.analyse(chain, sequences, 2);
+        result = TwoDim.AllSequencesCount(chain, sequences, 2);
         System.out.println("TEST 2D.8 : " + (result ? "BON TP!" : "MAUVAIS TP??"));
 
         // sequences present 2 et 3 times -> has to return FALSE with a value of = 3
-        result = analyseur2D.analyse(chain, sequences, 3);
+        result = TwoDim.AllSequencesCount(chain, sequences, 3);
         System.out.println("TEST 2D.9 : " + (!result ? "BON TP!" : "MAUVAIS TP??"));
-        */
+
 
         /* ************************* CONFIGURATION DES SYSTÃˆMES *************************
          *

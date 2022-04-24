@@ -10,6 +10,7 @@ public class ROT {
 
     public String convert (String receivedValue){
         String newValue = "";
+
         for (int i = 0 ; i < receivedValue.length() ; i++){
             newValue += seperate(receivedValue.charAt(i));
         }
@@ -31,21 +32,35 @@ public class ROT {
             }
         }
 
-
         int addValue = preCalc + variation;
-        if (addValue >= 0 && addValue <= 15){
+        if (addValue >= 0 && addValue < 16) {
+
             if (addValue < 10){
-                return currentCharacter;
-            }
-        } else {
-            int rotatedValue = addValue % 15;
-            if (rotatedValue < 10){
-                return currentCharacter;
+                return String.valueOf(addValue).charAt(0);
             } else {
+                switch (addValue){
+                    case 10 -> {return 'A';}
+                    case 11 -> {return 'B';}
+                    case 12 -> {return 'C';}
+                    case 13 -> {return 'D';}
+                    case 14 -> {return 'E';}
+                    case 15 -> {return 'F';}
+                    default -> throw new ArithmeticException("Non hexadecimal value returned");
+                }
+            }
+
+        } else {
+
+            int rotatedValue = addValue % 16;
+
+            if (rotatedValue < 10){
+
+                return String.valueOf(rotatedValue).charAt(0);
+            } else {
+
                 return hexadecimals[rotatedValue - 10];
             }
         }
-        return '0';
     }
 
     private void storeROT(int variation){

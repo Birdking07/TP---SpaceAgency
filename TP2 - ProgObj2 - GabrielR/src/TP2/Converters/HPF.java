@@ -9,11 +9,12 @@ public class HPF {
      * @return une valeur qui est soit plus grand ou égal au limite défini
      */
 
-    public static String convert (String receivedValue, int limit) {
+
+    public String convert(String receivedValue, int limit) {
 
         String newValue = "";
-        for (int i = 0 ; i < receivedValue.length() ; i++){
-            newValue += seperate(receivedValue.charAt(i) , limit);
+        for (int i = 0; i < receivedValue.length(); i++) {
+            newValue += seperate(receivedValue.charAt(i), limit);
         }
 
         return newValue;
@@ -21,7 +22,7 @@ public class HPF {
     }
 
 
-    private static char seperate(char currentCharacter , int limit){
+    private char seperate(char currentCharacter, int limit) {
         if (limit < 0) {
             limit = defaultLimit;
         }
@@ -46,4 +47,5 @@ public class HPF {
             return currentCharacter;
         }
     }
+
 }
