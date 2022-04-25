@@ -1,28 +1,45 @@
 package TP2.Analysers;
 
 import java.util.ArrayList;
+import java.lang.StringBuilder;
 
 public class OneDim extends AnalyserFormat{
 
 
 
     public boolean Sequence(String chain, String sequence) {
-        return chain.contains(sequence);
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(chain);
+        String reversedChain = stringBuilder.reverse().toString();
+        return chain.contains(sequence) || reversedChain.contains(sequence);
     }
 
 
     public boolean AllSequences(String chain, ArrayList<String> sequenceList) {
+        StringBuilder stringBuilder = new StringBuilder();
+        boolean normal = false , reversed = false;
         for (int i = 0 ; i < sequenceList.size() ; i++) {
-            if (chain.contains(sequenceList.get(i))){
-                return true;
+            if (chain.contains(sequenceList.get(i))) {
+                normal = true;
+                break;
             }
         }
-        return false;
+
+        stringBuilder.append(chain);
+        String reversedChain = stringBuilder.reverse().toString();
+        for (int i = 0 ; i < sequenceList.size() ; i++){
+            if (reversedChain.contains(sequenceList.get(i))){
+                reversed = true;
+                break;
+            }
+        }
+        return normal || reversed;
     }
 
 
     public boolean OneSequenceCount(String chain, String sequence, int objective) {
         int counter = 0;
+        String originalValue = chain;
 
              chain = chain.replaceAll(sequence , "X");
                for (int i = 0 ; i < chain.length() ; i++){
@@ -30,8 +47,16 @@ public class OneDim extends AnalyserFormat{
                        counter++;
                    }
                }
+
+               sequence = "21";
+               chain = originalValue;
+               int maxPos = chain.length();
+               for (int i = 0 ; i < chain.length() ; i++){
+                   char minPos = chain.charAt(i);
+                   minPos = chain.charAt(maxPos);
+                   maxPos--;
+               }
             return counter == objective;
-               //correctly does it's job but values given are incorrect?
     }
 
 
