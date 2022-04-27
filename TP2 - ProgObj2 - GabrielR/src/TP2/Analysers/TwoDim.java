@@ -8,6 +8,17 @@ public class TwoDim extends AnalyserFormat{
 
 
     public boolean Sequence(String chain, String sequence) {
+
+        String[][] current2dChain = convertToSquare(chain);
+        for (int i = 0 ; i < 32 ; i++){
+            for (int a = 0 ; a < 32 ; a++){
+                System.out.print(current2dChain[i][a]);
+                if (a == 31){
+                    System.out.println("");
+                }
+            }
+        }
+
         return false;
     }
 
@@ -30,10 +41,14 @@ public class TwoDim extends AnalyserFormat{
         int verticalPosition = 0;
         String[][] twoDimChain = new String[32][32];
         for (int i = 0 ; i < chain.length() ; i++){
-            twoDimChain[verticalPosition][i] = String.valueOf(chain.charAt(i));
-            if (i % 31 == 0){
+            if (i == 32){
+                i = 0;
                 verticalPosition++;
+                if (verticalPosition == 32){
+                    break;
+                }
             }
+            twoDimChain[verticalPosition][i] = String.valueOf(chain.charAt(i));
         }
         return twoDimChain;
     }
