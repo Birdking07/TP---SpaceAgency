@@ -26,7 +26,6 @@ public class SystemController {
         int seed = 80;
         String sequence = generator.obtenirChaineControle(seed);
 
-
         int loopCounter = 1;
         String[] allConverters = {"LPF"}; //changer avec la liste de convertisseurs
         for(int i = 0 ; i < allConverters.length ; i++){

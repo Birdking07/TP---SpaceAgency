@@ -38,8 +38,11 @@ public class OneDim extends AnalyserFormat{
 
 
     public boolean OneSequenceCount(String chain, String sequence, int objective) {
+        StringBuilder reversedChain = new StringBuilder();
         int counter = 0;
-        String originalValue = chain;
+
+        reversedChain.append(chain);
+        String reversedValue = reversedChain.reverse().toString();
 
              chain = chain.replaceAll(sequence , "X");
                for (int i = 0 ; i < chain.length() ; i++){
@@ -47,39 +50,50 @@ public class OneDim extends AnalyserFormat{
                        counter++;
                    }
                }
-
-               sequence = "21";
-               chain = originalValue;
-               int maxPos = chain.length();
-               for (int i = 0 ; i < chain.length() ; i++){
-                   char minPos = chain.charAt(i);
-                   minPos = chain.charAt(maxPos);
-                   maxPos--;
+            reversedValue = reversedValue.replaceAll(sequence , "X");
+               for (int i = 0 ; i < reversedValue.length(); i++){
+                   if (reversedValue.charAt(i) == 'X'){
+                       counter++;
+                   }
                }
             return counter == objective;
     }
 
 
     public boolean AllSequencesCount(String chain, ArrayList<String> sequenceList, int objective) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(chain);
+        String reversedValue = stringBuilder.reverse().toString();
+        String originalReversedValue = reversedValue;
+
         int[] counter = new int[3];
+
         String originalValue = chain;
+
         int objectiveCounter = 0;
+
      for (int i = 0 ; i < sequenceList.size() ; i++){
          chain = originalValue;
+         reversedValue = originalReversedValue;
          chain = chain.replaceAll(sequenceList.get(i) , "X");
          for (int a = 0 ; a < chain.length() ; a++){
              if (chain.charAt(a) == 'X'){
                  counter[i]++;
              }
          }
-     }
-     for (int i = 0 ; i < sequenceList.size() ; i++){
-         if (counter[i] == objective){
-             objectiveCounter++;
-         } else {
-             return false;
+         reversedValue = reversedValue.replaceAll(sequenceList.get(i) , "X");
+         for (int a = 0 ; a < reversedValue.length() ; a++){
+             if (reversedValue.charAt(a) == 'X'){
+                 counter[i]++;
+             }
          }
      }
-     return objectiveCounter == sequenceList.size();
+     for (int i = 0 ; i < sequenceList.size() ; i++){
+         System.out.println(counter[i] + " " + objective);
+         if (counter[i] >= objective){
+             objectiveCounter++;
+         }
+     }
+     return objectiveCounter >= sequenceList.size();
     }
 }
