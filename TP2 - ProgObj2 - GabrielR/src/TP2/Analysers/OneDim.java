@@ -8,15 +8,15 @@ public class OneDim extends AnalyserFormat{
 
 
     public boolean Sequence(String chain, String sequence) {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(chain);
-        String reversedChain = stringBuilder.reverse().toString();
+        String reversedChain = reverseChain(chain);
         return chain.contains(sequence) || reversedChain.contains(sequence);
     }
 
 
     public boolean AllSequences(String chain, ArrayList<String> sequenceList) {
-        StringBuilder stringBuilder = new StringBuilder();
+
+        String reversedChain = reverseChain(chain);
+
         boolean normal = false , reversed = false;
         for (int i = 0 ; i < sequenceList.size() ; i++) {
             if (chain.contains(sequenceList.get(i))) {
@@ -25,8 +25,6 @@ public class OneDim extends AnalyserFormat{
             }
         }
 
-        stringBuilder.append(chain);
-        String reversedChain = stringBuilder.reverse().toString();
         for (int i = 0 ; i < sequenceList.size() ; i++){
             if (reversedChain.contains(sequenceList.get(i))){
                 reversed = true;
@@ -38,11 +36,9 @@ public class OneDim extends AnalyserFormat{
 
 
     public boolean OneSequenceCount(String chain, String sequence, int objective) {
-        StringBuilder reversedChain = new StringBuilder();
         int counter = 0;
 
-        reversedChain.append(chain);
-        String reversedValue = reversedChain.reverse().toString();
+        String reversedValue = reverseChain(chain);
 
              chain = chain.replaceAll(sequence , "X");
                for (int i = 0 ; i < chain.length() ; i++){
@@ -61,14 +57,13 @@ public class OneDim extends AnalyserFormat{
 
 
     public boolean AllSequencesCount(String chain, ArrayList<String> sequenceList, int objective) {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(chain);
-        String reversedValue = stringBuilder.reverse().toString();
-        String originalReversedValue = reversedValue;
+
+        String reversedValue = reverseChain(chain);
 
         int[] counter = new int[3];
 
         String originalValue = chain;
+        String originalReversedValue = reversedValue;
 
         int objectiveCounter = 0;
 
@@ -89,11 +84,16 @@ public class OneDim extends AnalyserFormat{
          }
      }
      for (int i = 0 ; i < sequenceList.size() ; i++){
-         System.out.println(counter[i] + " " + objective);
          if (counter[i] >= objective){
              objectiveCounter++;
          }
      }
      return objectiveCounter >= sequenceList.size();
+    }
+
+    private String reverseChain (String chain){
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(chain);
+        return stringBuilder.reverse().toString();
     }
 }
