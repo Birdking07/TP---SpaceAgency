@@ -10,15 +10,30 @@ public class TwoDim extends AnalyserFormat{
     public boolean Sequence(String chain, String sequence) {
 
         String[][] current2dChain = convertToSquare(chain);
+
+        // horizontal
+        if (chain.contains(sequence)){
+            return true;
+        }
+        // reversed horizontal
+        if (reverseChain(chain).contains(sequence)){
+            return true;
+        }
+        //vertical
         for (int i = 0 ; i < 32 ; i++){
             for (int a = 0 ; a < 32 ; a++){
-                System.out.print(current2dChain[i][a]);
+
+            }
+        }
+        //diagonal
+        for (int i = 0 ; i < 32 ; i++){
+            for (int a = 0 ; a < 32 ; a++){
+                //funny here
                 if (a == 31){
-                    System.out.println("");
+                    //un mauvais tp
                 }
             }
         }
-
         return false;
     }
 
