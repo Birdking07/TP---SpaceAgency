@@ -10,15 +10,53 @@ public class TwoDim extends AnalyserFormat{
     public boolean Sequence(String chain, String sequence) {
 
         String[][] current2dChain = convertToSquare(chain);
+        String[] rows = new String[32];
+        String[] columns = new String[32];
+        String[] diagonals = new String[32]; // look at nazim dm for example
+        String[] reversedDiagonals = new String[32];
+        // horizontal & vertical rows being stored
+        for (int i = 0 ; i < 32 ; i++) {
+            for (int a = 0; a < 32; a++) {
+                rows[i] = current2dChain[i][a];
+                columns[i] = current2dChain[a][i];
+            }
+        }
+        //storing diagonals (set to downwards by default)
+
+        // https://www.baeldung.com/java-loop-diagonal-array
+
+        int totalValuesInside = 0;
+        boolean correctSide = true;
+        for (int i = 0 ; i < 32 ; i++){
+            if (i < 16 && correctSide){
+                totalValuesInside++;
+                for (int a = 0 ; a < totalValuesInside ; a++){
+                    int currentColumn = (i - a);
+                    diagonals[i] = current2dChain[currentColumn][i];
+                }
+            } else {
+                correctSide = false;
+                totalValuesInside--;
+                for (int a = 0 ; a < totalValuesInside ; a++){
+                    int currentColumn = (i - a);
+                    diagonals[i] = current2dChain[currentColumn][i];
+                }
+            }
+        }
 
         // horizontal
-        if (chain.contains(sequence)){
-            return true;
+        for (int i = 0 ; i < 32 ; i++){
+            if (rows[i].contains(sequence)){
+                return true;
+            }
         }
         // reversed horizontal
-        if (reverseChain(chain).contains(sequence)){
-            return true;
+        for (int i = 0 ; i < 32 ; i++){
+            if (reverseChain(rows[i]).contains(sequence)){
+                return true;
+            }
         }
+
         //vertical
         for (int i = 0 ; i < 32 ; i++){
             for (int a = 0 ; a < 32 ; a++){
@@ -27,14 +65,14 @@ public class TwoDim extends AnalyserFormat{
         }
         //diagonal
         for (int i = 0 ; i < 32 ; i++){
-            for (int a = 0 ; a < 32 ; a++){
-                //funny here
-                if (a == 31){
-                    //un mauvais tp
-                }
+            if (diagonals[i].contains(sequence)){
+                return true;
             }
+
         }
-        return false;
+        for (int i = 0 ; i < 32 ; i++){
+
+        }
     }
 
 
@@ -73,5 +111,4 @@ public class TwoDim extends AnalyserFormat{
         stringBuilder.append(chain);
         return stringBuilder.reverse().toString();
     }
-
 }
