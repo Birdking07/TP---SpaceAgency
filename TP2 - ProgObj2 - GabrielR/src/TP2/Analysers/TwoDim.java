@@ -23,23 +23,22 @@ public class TwoDim extends AnalyserFormat{
         }
         //storing diagonals (set to downwards by default)
 
-        // https://www.baeldung.com/java-loop-diagonal-array
-
         int totalValuesInside = 0;
         boolean correctSide = true;
         for (int i = 0 ; i < 32 ; i++){
+            diagonals[i] = "";
             if (i < 16 && correctSide){
                 totalValuesInside++;
                 for (int a = 0 ; a < totalValuesInside ; a++){
                     int currentColumn = (i - a);
-                    diagonals[i] = current2dChain[currentColumn][i];
+                    diagonals[i] += current2dChain[currentColumn][i];
                 }
             } else {
                 correctSide = false;
                 totalValuesInside--;
                 for (int a = 0 ; a < totalValuesInside ; a++){
                     int currentColumn = (i - a);
-                    diagonals[i] = current2dChain[currentColumn][i];
+                    diagonals[i] += current2dChain[currentColumn][i];
                 }
             }
         }
