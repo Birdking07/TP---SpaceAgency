@@ -12,7 +12,7 @@ public class TwoDim extends AnalyserFormat{
         String[][] current2dChain = convertToSquare(chain);
         String[] rows = new String[32];
         String[] columns = new String[32];
-        String[] diagonals = new String[64]; // look at nazim dm for example
+        String[] diagonals = new String[63]; // look at nazim dm for example
 
         String[] reversedDiagonals = new String[32];
         // horizontal & vertical rows being stored
@@ -27,6 +27,7 @@ public class TwoDim extends AnalyserFormat{
             }
         }
         //storing diagonals (set to downwards by default)
+        // reading from top leftwards
         for (int i = 0 ; i < 32 ; i++){
             diagonals[i] = "";
                 for (int a = 0 ; a < i  ; a++){
@@ -34,13 +35,14 @@ public class TwoDim extends AnalyserFormat{
                     diagonals[i] += current2dChain[currentDiagonalPos][currentDiagonalPos];
                 }
         }
-        int end = 31;
-        for (int i = 32 ; i < 64 ; i++){
-            diagonals[i] = diagonals[31].substring(0 , end);
-            end--;
+        //since the rest is basically a repeated pattern of the last index of the previous method keep removing the last index
+        int end = 30;
+        for (int i = 32 ; i < 63 ; i++){
+                diagonals[i] = diagonals[31].substring(0 , end);
+                end--;
         }
 
-        for (int i = 0 ; i < 63 ; i++){
+        for (int i = 0 ; i < 62 ; i++){
             System.out.println(diagonals[i]);
         }
 
