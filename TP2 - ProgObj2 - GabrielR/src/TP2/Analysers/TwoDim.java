@@ -20,10 +20,10 @@ public class TwoDim extends AnalyserFormat{
             for (int a = 0; a < 32; a++) {
                 rows[i] = current2dChain[i][a];
                 columns[i] = current2dChain[a][i];
-                /*System.out.print(current2dChain[i][a]);
+                System.out.print(current2dChain[i][a]);
                 if (a == 31){
                     System.out.println("");
-                }*/
+                }
             }
         }
         //storing diagonals (set to downwards by default)
@@ -31,16 +31,12 @@ public class TwoDim extends AnalyserFormat{
         for (int i = 0 ; i < 32 ; i++){
             diagonals[i] = "";
                 for (int a = 0 ; a < i  ; a++){
-                    int currentDiagonalPos = (i - a);
+                    int currentDiagonalPos = (i - a) - 1;
                     diagonals[i] += current2dChain[currentDiagonalPos][currentDiagonalPos];
                 }
         }
-        //since the rest is basically a repeated pattern of the last index of the previous method keep removing the last index
         int end = 30;
-        for (int i = 32 ; i < 63 ; i++){
-                diagonals[i] = diagonals[31].substring(0 , end);
-                end--;
-        }
+
 
         for (int i = 0 ; i < 62 ; i++){
             System.out.println(diagonals[i]);
@@ -93,17 +89,14 @@ public class TwoDim extends AnalyserFormat{
     }
 
     private String[][] convertToSquare (String chain){
-        int verticalPosition = 0;
+
         String[][] twoDimChain = new String[32][32];
-        for (int i = 0 ; i < chain.length() ; i++){
-            if (i == 32){
-                i = 0;
-                verticalPosition++;
-                if (verticalPosition == 32){
-                    break;
-                }
-            }
-            twoDimChain[verticalPosition][i] = String.valueOf(chain.charAt(i));
+        int currentChar = 0;
+        for (int i = 0 ; i < 32 ; i++){
+           for (int a = 0 ; a < 32 ; a++){
+               twoDimChain[i][a] = String.valueOf(chain.charAt(currentChar));
+               currentChar++;
+           }
         }
         return twoDimChain;
     }
