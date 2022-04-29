@@ -20,10 +20,10 @@ public class TwoDim extends AnalyserFormat{
             for (int a = 0; a < 32; a++) {
                 rows[i] = current2dChain[i][a];
                 columns[i] = current2dChain[a][i];
-                System.out.print(current2dChain[i][a]);
+                /*System.out.print(current2dChain[i][a]);
                 if (a == 31){
                     System.out.println("");
-                }
+                }*/
             }
         }
         //storing diagonals (set to downwards by default)
@@ -34,13 +34,12 @@ public class TwoDim extends AnalyserFormat{
                     diagonals[i] += current2dChain[currentDiagonalPos][currentDiagonalPos];
                 }
         }
+        int end = 31;
         for (int i = 32 ; i < 64 ; i++){
-            diagonals[i] = "";
-            for (int a = 0 ; a < i; a++){
-                int currentHorPos = (i - a);
-                diagonals[i] += current2dChain[a][currentHorPos]; //returns index out of bounds
-            }
+            diagonals[i] = diagonals[31].substring(0 , end);
+            end--;
         }
+
         for (int i = 0 ; i < 63 ; i++){
             System.out.println(diagonals[i]);
         }
