@@ -27,12 +27,12 @@ public class TwoDim extends AnalyserFormat{
             }
         }
         //storing diagonals (set to downwards by default)
-        // reading from top leftwards
+        // reading from top downwards
         for (int i = 0 ; i < 32 ; i++){
             diagonals[i] = "";
                 for (int a = 0 ; a < i  ; a++){
                     int currentDiagonalPos = (i - a) - 1;
-                    diagonals[i] += current2dChain[currentDiagonalPos][currentDiagonalPos];
+                    diagonals[i] += current2dChain[currentDiagonalPos][a];
                 }
         }
         int end = 30;
