@@ -1,6 +1,7 @@
 package TP2.Analysers;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class TwoDim extends AnalyserFormat{
 
@@ -12,7 +13,8 @@ public class TwoDim extends AnalyserFormat{
         String[][] current2dChain = convertToSquare(chain);
         String[] rows = new String[32];
         String[] columns = new String[32];
-        String[] diagonals = new String[63]; // look at nazim dm for example
+        String[] diagonalsNW = new String[32];
+        String[] diagonalsSE = new String[32];    // look at nazim dm for example
 
         String[] reversedDiagonals = new String[32];
         // horizontal & vertical rows being stored
@@ -26,20 +28,34 @@ public class TwoDim extends AnalyserFormat{
                 }
             }
         }
-        //storing diagonals (set to downwards by default)
+        //storing diagonalsNW (set to downwards by default)
         // reading from top downwards
-        for (int i = 0 ; i <= 32 ; i++){
-                diagonals[i] = "";
+        for (int i = 0 ; i < 32 ; i++){
+                diagonalsNW[i] = "";
                 for (int a = 0 ; a < i  ; a++){
 
                     int currentDiagonalPos = (i - a) - 1;
-                    diagonals[i - 1] += current2dChain[currentDiagonalPos][a];
+                    diagonalsNW[i - 1] += current2dChain[currentDiagonalPos][a];
                 }
         }
+        for (int i = 0 ; i < 32 ; i++){
+            diagonalsSE[i] = "";
+            int e = 32;
+            for (int a = 0 ; a < i ; a++){
+                e--;
+            }
+            for (int a = 0 ; a < i  ; a++){
 
+                int currentDiagonalPos = (32 - a) - 1;
+                if (a % e >= 1){
+                    e++;
+                }
+                diagonalsSE[i] += current2dChain[currentDiagonalPos][e];
+            }
+        }
 
-        for (int i = 0 ; i < 62 ; i++){
-            System.out.println(diagonals[i]);
+        for (int i = 0 ; i < 32 ; i++){
+            System.out.println(diagonalsSE[i]);
         }
 
 
@@ -64,7 +80,7 @@ public class TwoDim extends AnalyserFormat{
         }
         //diagonal
         for (int i = 1 ; i < 32 ; i++){
-            if (diagonals[i].contains(sequence)){
+            if (diagonalsNW[i].contains(sequence)){
                 return true;
             }
 
