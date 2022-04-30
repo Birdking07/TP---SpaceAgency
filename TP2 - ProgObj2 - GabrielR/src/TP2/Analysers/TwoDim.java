@@ -14,7 +14,9 @@ public class TwoDim extends AnalyserFormat{
         String[] rows = new String[32];
         String[] columns = new String[32];
         String[] diagonalsNW = new String[32];
-        String[] diagonalsSE = new String[32];    // look at nazim dm for example
+        String[] diagonalsSE = new String[32];
+        String[] diagonalsSW = new String[32];
+        String[] diagonalsNE = new String[32];
 
         String[] reversedDiagonals = new String[32];
         // horizontal & vertical rows being stored
@@ -55,7 +57,39 @@ public class TwoDim extends AnalyserFormat{
         }
 
         for (int i = 0 ; i < 32 ; i++){
-            System.out.println(diagonalsSE[i]);
+            diagonalsNE[i] = "";
+            int e = 32;
+            for (int a = 0 ; a < i ; a++){
+                e--;
+            }
+            for (int a = 0 ; a < i  ; a++){
+                if (a % e >= 1){
+                    e++;
+                }
+                diagonalsNE[i] += current2dChain[a][e];
+            }
+        }
+        for (int i = 0 ; i < 32 ; i++){
+            diagonalsSW[i] = "";
+            int e = 32;
+            for (int a = 0 ; a < i ; a++){
+                e--;
+            }
+            for (int a = 0 ; a < i  ; a++){
+
+                if (a % e >= 1){
+                    e++;
+                }
+                diagonalsSW[i] += current2dChain[e][a];
+            }
+        }
+
+
+
+
+
+        for (int i = 0 ; i < 32 ; i++){
+            System.out.println(diagonalsSW[i]);
         }
 
 
