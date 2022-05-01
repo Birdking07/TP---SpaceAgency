@@ -33,22 +33,22 @@ public class TwoDim extends AnalyserFormat{
         //storing diagonalsNW (set to downwards by default)
         // reading from top downwards
         for (int i = 0 ; i < 32 ; i++){
-            if (i > 0){
-                diagonalsNW[i - 1] = "";
-            }
+                diagonalsNW[i] = "";
                 for (int a = 0 ; a < i  ; a++){
 
                     int currentDiagonalPos = (i - a) - 1;
-                    diagonalsNW[i - 1] += current2dChain[currentDiagonalPos][a];
                     if (i == 31){
-                        diagonalsNW[i] = current2dChain[currentDiagonalPos][a];
+                        diagonalsNW[i] += current2dChain[currentDiagonalPos + 1][a];
+                    } else {
+                        diagonalsNW[i] += current2dChain[currentDiagonalPos][a];
                     }
                 }
         }
+
+
+
         for (int i = 0 ; i < 32 ; i++){
-            if (i > 0){
-                diagonalsSE[i - 1] = "";
-            }
+                diagonalsSE[i] = "";
             int e = 32;
             for (int a = 0 ; a < i ; a++){
                 e--;
@@ -56,52 +56,39 @@ public class TwoDim extends AnalyserFormat{
             for (int a = 0 ; a < i  ; a++){
 
                 int currentDiagonalPos = (32 - a) - 1;
-                if (a % e >= 1){
+                if (a % e >= 1 || (i == 31 && a != 0)){
                     e++;
                 }
-                diagonalsSE[i - 1] += current2dChain[currentDiagonalPos][e];
-                if (i == 31){
-                    diagonalsSE[i] = current2dChain[e - 1][a];
-                }
+                diagonalsSE[i] += current2dChain[currentDiagonalPos][e];
             }
         }
 
         for (int i = 0 ; i < 32 ; i++){
-            if (i > 0){
-                diagonalsNE[i - 1] = "";
-            }
+                diagonalsNE[i] = "";
             int e = 32;
             for (int a = 0 ; a < i ; a++){
                 e--;
             }
             for (int a = 0 ; a < i  ; a++){
-                if (a % e >= 1){
+                if (a % e >= 1 || (i == 31 && a != 0)){
                     e++;
                 }
-                diagonalsNE[i - 1] += current2dChain[a][e];
-                if (i == 31){
-                    diagonalsNE[i] = current2dChain[e - 1][a];
-                }
+                diagonalsNE[i] += current2dChain[a][e];
             }
         }
 
         for (int i = 0 ; i < 32 ; i++){
-            if (i > 0){
-                diagonalsSW[i - 1] = "";
-            }
+                diagonalsSW[i] = "";
             int e = 32;
             for (int a = 0 ; a < i ; a++){
                 e--;
             }
             for (int a = 0 ; a < i  ; a++){
 
-                if (a % e >= 1){
+                if (a % e >= 1 || (i == 31 && a != 0)){
                     e++;
                 }
-                diagonalsSW[i - 1] += current2dChain[e][a];
-                if (i == 31){
-                    diagonalsSW[i] += current2dChain[e + 1][a];
-                }
+                diagonalsSW[i] += current2dChain[e][a];
             }
         }
 
@@ -109,7 +96,7 @@ public class TwoDim extends AnalyserFormat{
 
 
         for (int i = 0 ; i < 32 ; i++){
-            System.out.println(diagonalsNW[i]);
+            System.out.println(diagonalsSW[i]);
         }
 
 
