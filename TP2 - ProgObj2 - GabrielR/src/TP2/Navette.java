@@ -1,5 +1,14 @@
 package TP2;
 
+/**
+ Classe main du TP2 : Space agency
+ @author : Gabriel R
+ @handIn : 5/1/2022
+ @description : Va obtenir une chain de caractères sous forme hexadécimale et va ensuite la convertir dans une
+ des convertisseurs par la methode convert() et ensuite va faire l'appel aux analyseurs pour vérifier la chaine
+ et si tous les analyseurs retournent vrai le décollage est authorisé.
+ */
+
 public class Navette {
     public static void main(String[] Args){
 
@@ -18,6 +27,9 @@ public class Navette {
         if (liftoff){
             System.out.println("Merci pour le bon tp Gilles!!");
             System.out.println("Décollage authorisé!");
+        } else {
+            System.out.println("Décollage non authorisé");
+            System.out.println("Une ou plusieurs analyseurs ont échoué...");
         }
 
     }

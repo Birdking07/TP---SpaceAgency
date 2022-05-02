@@ -1,11 +1,5 @@
 
-/**
-  Classe main du TP2 : Space agency
-  @author : Gabriel R
-  @handIn : 5/1/2022
-  @description : Va obtenir une chain de caractères sous forme hexadécimale et va ensuite la convertir dans une
-                 des convertisseurs par la methode convertir() et ensuite va faire l'appel à une des convertisseurs.
- */
+
 
 package TP2;
 
@@ -22,7 +16,8 @@ public class SystemController {
      *
      * @param converterType type de convertisseur utilisé
      *  Options : HPF INV LPF POI ROT
-     * @param chain série de chiffres de la méthode obtenirChaineControle
+     * @param chain série de chiffres de la méthode obtenirChaineControle dans la classe Navette
+     * @return la série de chiffres dans chain modifié par une des convertisseurs si l'une des convertisseurs est défini.
      */
 
      static String convert(String converterType , String chain){
@@ -60,6 +55,12 @@ public class SystemController {
 
     }
 
+    /**
+     *
+     * @param chain série de chiffres de la méthode obtenirChaineControle dans la classe Navette a ce point ci il est possible
+     *              que le chiffre a été modifié dans un des convertisseurs.
+     * @return un boolean soit vrai si toutes les analyseurs et leurs paramètres sont vérifiés ou faux si un échoue
+     */
      static boolean analyse(String chain){
         OneDim oneDim = new OneDim();
         TwoDim twoDim = new TwoDim();
@@ -110,6 +111,11 @@ public class SystemController {
 
         return true;
     }
+
+    /**
+     * @author Gilles grégoire phillipe
+     * Méthode qui, s'il est éxécuté va vérifier le fonctionnement de tous les convertisseurs et analyseurs.
+     */
 
     static private void testTP() {
 
