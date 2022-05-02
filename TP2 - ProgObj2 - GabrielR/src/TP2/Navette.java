@@ -18,7 +18,7 @@ public class Navette {
         int seed = 100;
         String sequence = generator.obtenirChaineControle(seed);
 
-        String[] allConverters = {""}; //changer avec la liste de convertisseurs
+        String[] allConverters = {""}; //changer avec la liste de convertisseurs voulue
         for(int i = 0 ; i < allConverters.length ; i++){
             sequence = SystemController.convert(allConverters[i], sequence);
         }
