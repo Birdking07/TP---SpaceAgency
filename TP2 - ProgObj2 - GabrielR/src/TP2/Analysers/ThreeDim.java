@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class ThreeDim extends AnalyserFormat{
 
 
-
+  // complexité trop grande analyseur sauté
 
 
     public boolean Sequence(String chain, String sequence) {

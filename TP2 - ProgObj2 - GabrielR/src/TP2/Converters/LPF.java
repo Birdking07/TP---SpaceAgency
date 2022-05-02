@@ -1,7 +1,15 @@
 package TP2.Converters;
 
+
+
 public class LPF {
 
+    /**
+     *
+     * @param receivedValue valeur recue à être transformée
+     * @param limit valeur maximale qui peut être renvoyé
+     * @return la chaine transformée ou chaque char est soit plus petit que la limite ou égal à 0
+     */
     public String convert (String receivedValue , int limit){
 
         String newValue = "";
@@ -10,7 +18,7 @@ public class LPF {
         }
         return newValue;
     }
-
+    //changement de chaque valeur individuelle
     private char seperate(char currentCharacter , int limit){
         int value = 0;
         try {

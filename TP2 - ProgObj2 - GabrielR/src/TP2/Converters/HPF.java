@@ -5,11 +5,13 @@ public class HPF {
 
     private static int defaultLimit = 8;
 
+
     /**
-     * @return une valeur qui est soit plus grand ou égal au limite défini
+     *
+     * @param receivedValue chaine à transformer
+     * @param limit valeur minimale qui sera envoyé toutes les autres valeurs seront égal à 0
+     * @return la chaine transformée ou chaque char soit est d'une valeur plus grande que la limite ou 0
      */
-
-
     public String convert(String receivedValue, int limit) {
 
         String newValue = "";
@@ -21,7 +23,7 @@ public class HPF {
 
     }
 
-
+    //changement de chaque valeur individuelle
     private char seperate(char currentCharacter, int limit) {
         if (limit < 0) {
             limit = defaultLimit;

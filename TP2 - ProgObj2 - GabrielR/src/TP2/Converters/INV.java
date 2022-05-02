@@ -1,7 +1,14 @@
 package TP2.Converters;
 
+
+
 public class INV {
 
+    /**
+     *
+     * @param receivedValue valeur recue à être transformée
+     * @return une chaine avec toutes leurs valeurs inversées
+     */
     public String convert (String receivedValue){
 
         String newValue = "";
@@ -15,6 +22,7 @@ public class INV {
         return newValue;
     }
 
+    //changement de chaque valeur individuelle
     private static char seperate(char inversedChar){
         switch (inversedChar) {
             case '0' -> inversedChar = 'F';

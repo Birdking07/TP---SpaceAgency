@@ -8,6 +8,11 @@ public class ROT {
         storeROT(storedInt);
     }
 
+    /**
+     *
+     * @param receivedValue la chaine à être transformé
+     * @return la chaine ou chaque valeur est soumis à une variation deja définie dans le constructeur
+     */
     public String convert (String receivedValue){
         String newValue = "";
 
@@ -16,6 +21,7 @@ public class ROT {
         }
         return newValue;
     }
+    //changement de chaque valeur individuelle
     private char seperate(char currentCharacter){
         char[] hexadecimals = {'A' , 'B' , 'C' , 'D' , 'E'};
         int preCalc = 0;
@@ -62,7 +68,7 @@ public class ROT {
             }
         }
     }
-
+   // va passer la valeur dans le constructeur dans le variable globale afin de l'utiliser dans les méthodes
     private void storeROT(int variation){
         this.variation = variation;
     }
